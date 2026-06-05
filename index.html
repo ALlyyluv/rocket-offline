@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Rocket Cashout Demo</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <section class="stage">
+        <canvas id="canvas"></canvas>
+        <div class="hud">
+          <div>
+            <span>Rocket Cashout Demo</span>
+            <h1 id="multiplier">1.00x</h1>
+          </div>
+          <div class="pill" id="status">Pasang bet: 5s</div>
+        </div>
+      </section>
+
+      <aside class="panel">
+        <section id="authBox" class="box">
+          <div class="tabs">
+            <button id="loginMode" class="active" type="button">Login</button>
+            <button id="registerMode" type="button">Daftar</button>
+          </div>
+          <form id="authForm">
+            <label>Username</label>
+            <input id="username" minlength="3" required />
+            <label>Password</label>
+            <input id="password" minlength="4" required type="password" />
+            <button class="primary" id="authSubmit" type="submit">Login</button>
+            <p id="authMessage"></p>
+          </form>
+          <small>Admin demo: admin / admin123</small>
+        </section>
+
+        <section id="accountBox" class="box hidden">
+          <span>Akun</span>
+          <strong id="accountName">-</strong>
+          <small id="accountRole">Player</small>
+          <button id="logoutButton" type="button">Logout</button>
+        </section>
+
+        <section id="playerBox" class="box hidden">
+          <span>Saldo Virtual</span>
+          <strong id="balance">0</strong>
+          <form id="topupForm">
+            <label>Top Up Simulasi</label>
+            <input id="topupAmount" inputmode="numeric" value="100" />
+            <button type="submit">Ajukan Top Up</button>
+            <p id="topupMessage"></p>
+          </form>
+          <form id="withdrawForm">
+            <label>Withdraw Simulasi</label>
+            <input id="withdrawAmount" inputmode="numeric" value="50" />
+            <button type="submit">Withdraw</button>
+            <p id="withdrawMessage"></p>
+          </form>
+          <form id="betForm">
+            <label>Taruhan</label>
+            <input id="betAmount" inputmode="numeric" value="50" />
+            <label>Auto Cash Out</label>
+            <input id="autoCashout" inputmode="decimal" value="2.00" />
+            <label class="check"><input id="autoEnabled" type="checkbox" /> Aktifkan auto</label>
+            <button class="primary" id="placeBetButton" type="submit">Pasang Bet</button>
+            <button id="cashoutButton" type="button" disabled>Cash Out</button>
+            <p id="betMessage"></p>
+          </form>
+          <div class="stats">
+            <div><span>Bet</span><strong id="activeBet">0</strong></div>
+            <div><span>Potensi</span><strong id="potentialWin">0</strong></div>
+            <div><span>Ronde</span><strong id="roundCount">0</strong></div>
+          </div>
+          <h2>Histori</h2>
+          <ol id="historyList"></ol>
+        </section>
+
+        <section id="adminBox" class="box hidden">
+          <h2>Admin Demo</h2>
+          <div class="stats">
+            <div><span>User</span><strong id="adminUsers">0</strong></div>
+            <div><span>Pending</span><strong id="adminPending">0</strong></div>
+          </div>
+          <h2>Top Up Pending</h2>
+          <div id="adminTopups"></div>
+          <h2>Aktivitas</h2>
+          <div id="adminActivities"></div>
+        </section>
+      </aside>
+    </main>
+    <script src="app.js"></script>
+  </body>
+</html>
