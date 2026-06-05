@@ -71,9 +71,6 @@ function loadDb() {
 }
 
 function ensureDb(next) {
-  if (!next.users.some((user) => user.role === "admin")) {
-    next.users.unshift({ id: "admin", username: "admin", password: "admin123", role: "admin", balance: 0, history: [] });
-  }
   next.topups ||= [];
   next.activities ||= [];
   saveDb(next);
@@ -139,9 +136,10 @@ function submitAuth(event) {
       ui.authMessage.textContent = "Username sudah dipakai.";
       return;
     }
-    const user = { id: id("user"), username, password, role: "player", balance: 0, history: [] };
+    const role = db.users.some((user) => user.role === "admin") ? "player" : "admin";
+    const user = { id: id("user"), username, password, role, balance: 0, history: [] };
     db.users.push(user);
-    addActivity(user, "Daftar akun");
+    addActivity(user, role === "admin" ? "Daftar akun admin demo pertama" : "Daftar akun player");
     saveDb();
     setSession(user.id);
     ui.authForm.reset();

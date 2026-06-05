@@ -6,6 +6,7 @@ Keterbatasan:
 
 - Tidak ada backend.
 - Data tersimpan di browser masing-masing lewat `localStorage`.
+- Akun pertama yang didaftarkan di browser menjadi admin demo.
 - Admin hanya bisa melihat data yang ada di browser yang sama.
 - Tidak cocok untuk real-money atau produksi.
 
